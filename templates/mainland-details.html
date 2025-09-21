@@ -1,0 +1,1091 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+            <title>Mainland Company Formation in UAE | Business Setup Experts</title>
+    <meta name="description" content="Start your mainland business in UAE with expert guidance. Enjoy 100% ownership, flexible office locations, and seamless approvals. Book a free consultation today!.">
+    
+    <!-- Stylesheets -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/flatpickr.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/slick-theme.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/slick.css' %}">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+
+    <!-- Responsive -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+
+<body>
+  <div class="page-wrapper">
+    <script>
+(function(){var e=document;e.addEventListener("contextmenu",function(e){e.preventDefault()});e.addEventListener("keydown",function(e){if(e.key==="F12")e.preventDefault();if(e.ctrlKey&&e.shiftKey&&["I","J","C"].includes(e.key.toUpperCase()))e.preventDefault();if(e.ctrlKey&&["U","S"].includes(e.key.toUpperCase()))e.preventDefault()});setInterval(function(){if(window.outerWidth-window.innerWidth>200||window.outerHeight-window.innerHeight>200){document.body.innerHTML="<h1 style='text-align:center;color:red;margin-top:20%'>⚠️ Access Denied</h1>"}},1e3)})();
+</script>
+<style>body{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}</style>
+
+    <!-- Preloader -->
+    <div class="preloader"></div>
+
+    <header class="main-header header-style-two">
+
+      <!-- Header Top -->
+      <div class="header-top">
+        <div class="auto-container">
+
+          <div class="top-left">
+            <!-- Info List -->
+            <ul class="info-list">
+              <li>
+  <i class="fa-solid fa-envelope" style="color: white;"></i>
+  <a href="mailto:office@gulfcentral.ae">office@gulfcentral.ae</a>
+</li>
+              </li>
+              <li>
+             <a href="{% url 'cost_calculator' %}" class="btn-cost-calculator">
+
+  <span style="color: #D3202A;">Business Cost Calculator</span>
+  
+</a>
+
+<style>
+.btn-cost-calculator {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* space between icon and text */
+    padding: 3px 15px; /* button size */
+    background-color: #fff; /* button color */
+    color: #fff;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-cost-calculator i {
+    font-size: 18px; /* icon size */
+}
+
+
+</style>
+
+            </li>
+            </ul>
+          </div>
+
+          <div class="top-right">
+            <div class="select-box">
+              
+
+            
+            </div>
+            <ul class="top-social-icon">
+              <li><a href="https://www.facebook.com/gulfcentraluae"><i class="fa-brands fa-facebook-f"></i></a></li>
+              <li><a href="https://www.instagram.com/gulfcentraluae/"><i class="fa-brands fa-instagram"></i></a></li>
+              <li><a href="https://twitter.com/gulf_centraluae"><i class="fa-brands fa-x-twitter"></i></a></li>
+              <li><a href="https://www.linkedin.com/company/gulf-central/"><i class="fa-brands fa-linkedin-in"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- Header Top -->
+
+      <!-- Main box -->
+      <div class="main-box">
+        <div class="logo-box">
+         <div class="logo">
+          <a href="{% url 'index' %}">
+              <img src="{% static 'images/logo.png' %}" alt="Consultez" title="Consultez">
+          </a>
+      </div>
+
+        </div>
+        <!--Nav Box-->
+        <div class="nav-outer">
+        <nav class="nav main-menu">
+    <ul class="navigation">
+        <!-- Home link -->
+        
+        
+        <!-- About page -->
+        
+
+        <!-- Dynamic Menu -->
+        {% for menu in menus %}
+        <li class="dropdown">
+            <a href="#">{{ menu.name }}</a>
+            <ul>
+                {% for category in menu.categories.all %}
+                <li class="dropdown">
+                    <a href="#">{{ category.name }}</a>
+                    <ul>
+                        {% for service in category.services.all %}
+                        <li>
+                           {% if service.slug %}
+                              <a href="{% url 'service_details' slug=service.slug %}">{{ service.name }}</a>
+                          {% else %}
+                                <a href="#">{{ service.name }}</a>
+                            {% endif %}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                {% endfor %}
+            </ul>
+        </li>
+        {% endfor %}
+        <li class="dropdown">
+         <a href="#"> Others </a> 
+        <ul>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'blogs' %}">Blogs</a></li>
+          <li><a href="{% url 'news' %}">News</a></li>
+          <li><a href="{% url 'cost_calculator' %}">Cost Calculator</a></li>
+          <li><a href="{% url 'contact' %}">Contact Us</a></li>
+        </ul>
+      </li>
+                                   
+    </ul>
+</nav>
+
+          <!-- Main Menu End-->
+        </div>
+        <div class="outer-box">
+          <div class="info-box">
+            
+<!-- Trigger -->
+<a id="openPopup" class="btn-one-light" href="#" role="button" aria-haspopup="dialog" style="color:black; cursor:pointer;">
+  Consult an Expert
+</a>
+
+<!-- Modal -->
+<div id="popupModal" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="modal-content" role="document">
+    <!-- Close button -->
+    <button type="button" class="close-btn" aria-label="Close dialog">&times;</button>
+
+    <div class="modal-body">
+      <!-- Left: Image -->
+      <div class="modal-left">
+        <img src="{% static 'images/about/dubaii.jpg' %}" alt="Dubai skyline">
+      </div>
+
+      <!-- Right: Form -->
+      <div class="modal-right">
+        <h2 class="form-title">Consult an Expert</h2>
+        <form method="post" action="{% url 'consultancy_expert_form' %}" class="popup-form">
+          {% csrf_token %}
+
+          <input type="text" name="name" placeholder="Full Name" required>
+          <input type="email" name="email" placeholder="Email" required>
+          <input type="tel" name="phone" placeholder="Phone" required>
+
+          <select name="setup_type" required>
+            <option value="">-- Select Package --</option>
+            <option value="mainland">Mainland Company Setup</option>
+            <option value="freezone">Freezone Company Setup</option>
+            <option value="offshore">Offshore Company Setup</option>
+          </select>
+
+          <textarea name="message" placeholder="Your Message" rows="4"></textarea>
+
+          <button type="submit" class="submit-btn">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =========================
+  Styles (inline so copy/paste works)
+  ========================= -->
+<style>
+/* overlay hidden by default; transition for fade */
+.modal-overlay{
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.6);
+  z-index: 9999;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 200ms ease, visibility 200ms;
+  padding: 20px;
+}
+
+/* `.open` class toggles visibility */
+.modal-overlay.open{
+  visibility: visible;
+  opacity: 1;
+}
+
+/* modal box */
+.modal-content{
+  width: 90%;
+  max-width: 900px;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  transform-origin: center;
+  transform: translateY(0);
+  transition: transform 200ms ease;
+}
+
+/* close button (large tappable area) */
+.close-btn{
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  z-index: 1010;
+  border: none;
+  background: transparent;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 8px;
+  color: #333;
+  border-radius: 6px;
+}
+.close-btn:hover{ color: #d33; }
+
+/* layout */
+.modal-body{
+  display: flex;
+  gap: 0;
+  min-height: 320px;
+  align-items: stretch;
+}
+
+/* left image */
+.modal-left{
+  flex: 1 1 45%;
+  min-width: 200px;
+  max-width: 50%;
+  overflow: hidden;
+}
+.modal-left img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* right form */
+.modal-right{
+  flex: 1 1 55%;
+  padding: 26px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.form-title{ font-size: 20px; margin-bottom: 12px; font-weight: 700; }
+.popup-form{ display: flex; flex-direction: column; gap: 12px; }
+.popup-form input,
+.popup-form select,
+.popup-form textarea{
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.submit-btn{
+  background: #D3202A;
+  color: #fff;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+}
+.submit-btn:hover{ background: #D3202A; }
+
+/* responsive: stack */
+@media (max-width: 768px){
+  .modal-body{ flex-direction: column; min-height: 0; }
+  .modal-left{ max-width: 100%; height: 180px; }
+  .modal-left img{ height: 100%; }
+  .modal-right{ padding: 18px; }
+  .close-btn{ top: 6px; right: 8px; }
+}
+</style>
+
+<!-- =========================
+  JS — robust handlers
+  ========================= -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const openBtn = document.getElementById('openPopup');
+  const modal = document.getElementById('popupModal');
+  if (!openBtn || !modal) {
+    // Elements not present — nothing to do
+    console.warn('Modal elements not found (openPopup or popupModal).');
+    return;
+  }
+
+  // helper functions
+  function openModal() {
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    // prevent background scroll
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+    // focus first focusable element inside modal for accessibility
+    const firstFocusable = modal.querySelector('input, select, textarea, button, [tabindex]:not([tabindex="-1"])');
+    if (firstFocusable) firstFocusable.focus();
+  }
+
+  function closeModal() {
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.documentElement.style.overflow = '';
+    document.body.style.overflow = '';
+    // return focus to the trigger
+    openBtn.focus();
+  }
+
+  // Open click — prevent default if it's an <a href="#">
+  openBtn.addEventListener('click', function (ev) {
+    ev.preventDefault();
+    openModal();
+  });
+
+  // Use event delegation: clicking overlay background or any element with .close-btn will close
+  modal.addEventListener('click', function (ev) {
+    // if clicked directly on overlay (outside modal-content)
+    if (ev.target === modal) {
+      closeModal();
+      return;
+    }
+    // if clicked a close button (or inside it)
+    if (ev.target.closest && ev.target.closest('.close-btn')) {
+      closeModal();
+      return;
+    }
+  });
+
+  // ESC key closes when modal is open
+  window.addEventListener('keydown', function (ev) {
+    if (ev.key === 'Escape' || ev.key === 'Esc') {
+      if (modal.classList.contains('open')) closeModal();
+    }
+  });
+
+  // Defensive: if someone programmatically sets display none on .close-btn or z-index issues exist,
+  // the delegation above still works when clicking overlay; clicking the visible X should also trigger.
+});
+</script>
+          </div>
+          <div class="mobile-nav-toggler" style="background-color: #D3202A; color: #fff;" ><i class="fa-light fa-bars-staggered" ></i></div>
+          <!-- Mobile Nav toggler -->
+        </div>
+      </div>
+      <div class="auto-container">
+        <!-- Mobile Menu  -->
+        <div class="mobile-menu">
+          <div class="menu-backdrop" ></div>
+          <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
+          <nav class="menu-box" style="background-color: #D3202A;">
+            <div class="upper-box">
+              <div class="nav-logo">
+                <a href="{% url 'index' %}">
+                    <img src="{% static 'images/logo12.png' %}" alt="Logo">
+                </a>
+            </div>
+
+              <div class="close-btn"><i class="icon fa fa-times"></i></div>
+            </div>
+            <ul class="navigation clearfix d-block d-lg-none">
+              <!--Keep This Empty / Menu will come through Javascript-->
+            </ul>
+            <div class="content-box d-none d-lg-block">
+              <h4 class="title">About Us</h4>
+              <p class="text" style="color: #f8f5f2;">
+              Gulf Central is the premier hub for entrepreneurs and businesses, offering expert business setup, PRO, visa, and company formation services across Dubai and the UAE.
+              </p>
+            </div>
+            <ul class="contact-list-one">
+              <li>
+                <!-- Contact Info Box -->
+                <div class="contact-info-box">
+                  <i class="icon lnr-icon-phone-handset"></i>
+                  <span class="title" style="color: #f8f5f2;">Call Now</span>
+                  <a href="tel:+971568047000">+971 56 804 7000</a>
+                </div>
+              </li>
+              <li>
+                <!-- Contact Info Box -->
+                <div class="contact-info-box">
+                  <span class="icon lnr-icon-envelope1"></span>
+                  <span class="title" style="color: #f8f5f2;">Send Email</span>
+                  <a href="mailto:office@gulfcentral.ae">office@gulfcentral.ae</a>
+                </div>
+              </li>
+              <li>
+                <!-- Contact Info Box -->
+                <div class="contact-info-box">
+                  <span class="icon lnr-icon-clock"></span>
+                  <div class="contact-info-text">
+                    <span class="title" style="color: #f8f5f2;">Time</span>
+                    <p style="color: #fff;">Monday - Friday: 09:00 - 06:00<br>
+                      Saturday: 10:00 - 05:00<br>
+                      Sunday: CLOSED
+                    </p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <ul class="social-links">
+  <li>
+    <a href="https://twitter.com/gulf_centraluae" target="_blank" rel="noopener noreferrer">
+      <i class="fab fa-x-twitter"></i>
+    </a>
+  </li>
+  <li>
+    <a href="https://www.facebook.com/gulfcentraluae" target="_blank" rel="noopener noreferrer">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+  </li>
+  <li>
+    <a href="https://www.linkedin.com/company/gulf-central/" target="_blank" rel="noopener noreferrer">
+      <i class="fab fa-linkedin-in"></i>
+    </a>
+  </li>
+  <li>
+    <a href="https://www.instagram.com/gulfcentraluae/" target="_blank" rel="noopener noreferrer">
+      <i class="fab fa-instagram"></i>
+    </a>
+  </li>
+</ul>
+          </nav>
+        </div>
+        <!-- End Mobile Menu -->
+    
+        <!-- Header Search -->
+        <div class="search-popup">
+          <span class="search-back-drop"></span>
+          <button class="close-search"><span class="fa fa-times"></span></button>
+          <div class="search-inner">
+            <form method="post" action="{% url 'index' %}">
+              <div class="form-group">
+                <input type="search" name="search-field" value="" placeholder="Search..." required="">
+                <button type="submit"><i class="fa fa-search"></i></button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- End Header Search -->
+
+        <!-- Sticky Header  -->
+        <div class="sticky-header">
+          <div class="auto-container">
+            <div class="inner-container">
+              <!--Logo-->
+              <div class="logo">
+                 <a href="{% url 'index' %}">
+                    <img src="{% static 'images/logo.png' %}" alt="Logo">
+                </a>
+              </div>
+              <!--Right Col-->
+              <div class="nav-outer">
+                <!-- Main Menu -->
+                <nav class="main-menu">
+                  <div class="navbar-collapse show collapse clearfix">
+                    <ul class="navigation clearfix">
+                      <!--Keep This Empty / Menu will come through Javascript-->
+                    </ul>
+                  </div>
+                </nav><!-- Main Menu End-->
+                <!--Mobile Navigation Toggler-->
+                <div class="mobile-nav-toggler"><span class="icon lnr-icon-bars"></span></div>
+              </div>
+            </div>
+          </div>
+        </div><!-- End Sticky Menu -->
+      </div>
+    </header>
+    <!--End Main Header -->
+    <style>
+     
+      /* Mobile menu link color fix */
+.mobile-menu .navigation li a {
+    color: #fff !important;   /* Black text */
+}
+
+/* Mobile menu dropdown arrow color if any */
+.mobile-menu .navigation li a::after {
+    color: #fff !important;
+}
+    </style>
+<!-- Banner area start here -->
+
+
+<!-- Banner area start here -->
+<section class="banner-section-two paralax__animation" style=" padding: 100px 0; display: flex; align-items: center;">
+<div class="sec-shape">
+    <img data-depth="0.03" src="{% static 'images/banner/banner-two-shape.png' %}" alt="Shape">
+</div>
+
+  <div class="container">
+    <div class="row g-0 align-items-center justify-content-center">
+      <!-- Content Only -->
+      <div class="col-lg-10 content-column text-start">
+        <div class="inner-column">
+          <div class="content-box">
+            <h6 class="sub-title wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms"
+                style="background-color:#D3202A; color:#fff; padding:6px 12px; display:inline-block; border-radius:4px;">
+              Mainland Company Setup
+            </h6>
+         <!-- Start Google Reviews Section -->
+          <a href="https://share.google/nmkmZA2amHUiX8S5Z" target="_blank" style="text-decoration:none;">
+            <div style="display:flex; align-items:left; gap:10px; justify-content:left; margin-top:10px; cursor:pointer;">
+                <!-- Google Review Image -->
+                <img src="{% static 'images/icon/g-r.svg' %}" alt="Google Reviews" style="height:40px;">
+
+                <!-- 5-Star Rating Text -->
+                <h6 style="margin:0; font-weight:600; font-size:18px; color:#000;">
+                  <span style="color:#FFD700;">★★★★★</span>  5/5 (2K+ Reviews)
+                </h6>
+            </div>
+          </a>
+
+
+
+
+          
+
+            <h1 class="title wow fadeInUp mt-3" data-wow-delay="200ms" data-wow-duration="1500ms">
+              <span style="color:#D3202A;">Mainland </span>Company Setup
+            </h1>
+        
+
+  
+
+            <p class="text wow fadeInUp mt-3" data-wow-delay="500ms" data-wow-duration="1500ms">
+  Gulf Central helps entrepreneurs and companies establish and grow their businesses in Dubai and the UAE, offering expert guidance on Mainland company setup, PRO services, visa assistance, and company formation.
+</p>
+
+            <div class="btn-wrp mt-4">
+              <a class="btn-two-rounded wow fadeInLeft" data-wow-delay="500ms" data-wow-duration="1500ms" 
+                 href="{% url 'contact' %}" style="background:#D3202A; color:#fff; padding:10px 20px; border-radius:30px; text-decoration:none; margin-right:10px;">
+                free consultation
+ <i class="fa-regular fa-angle-right"></i>
+              </a>
+            
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Decorative Stars -->
+<div class="star1" style="position:absolute; top:10%; left:5%;">
+    <img src="{% static 'images/banner/banner-two-star.png' %}" alt="Star">
+</div>
+<div class="star2" style="position:absolute; bottom:15%; right:10%;">
+    <img src="{% static 'images/banner/banner-two-star.png' %}" alt="Star">
+</div>
+</section>
+  
+
+ <!-- mainland area start here -->
+<section class="about-section-three pt-120 pb-120">
+  <div class="container">
+    <div class="row g-5 g-xxl-0">
+      <div class="col-xl-6 image-column">
+        <div class="inner-column">
+          <div class="shape"></div>
+          <figure class="image">
+            <img src="{% static 'images/about/mainland.jpg' %}" alt="Image">
+          </figure>
+          <p class="text mt-30 wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1500ms">
+            Gulf Central delivers innovative solutions and quality services across the GCC, helping businesses grow through reliable partnerships and expert support.
+          </p>
+
+          <div class="info mt-50 wow fadeInUp" data-wow-delay="400ms" data-wow-duration="1500ms">
+            <a class="btn-one-rounded" style="background-color: #D3202A; color: #fff;" href="{% url 'contact' %}"> Free Consultation <i class="fa-regular fa-arrow-up-right"></i></a>
+            <div class="user">
+              <ul>
+                <li><img src="{% static 'images/about/about-two-user1.png' %}" alt="Image"></li>
+                <li><img src="{% static 'images/about/about-two-user2.png' %}" alt="Image"></li>
+                <li><img src="{% static 'images/about/about-two-user3.png' %}" alt="Image"></li>
+                <li><img src="{% static 'images/about/about-two-user4.png' %}" alt="Image"></li>
+              </ul>
+              <h6 class="title">10M+ Impact Across the World. <img src="{% static 'images/about/about-two-line.png' %}" alt="Image"></h6>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xl-6 content-column">
+        <div class="inner-column">
+          <div class="sec-title">
+            <h6 class="sub-title wow fadeInUp" style="background-color: #D3202A; color: #fff;" data-wow-delay="00ms" data-wow-duration="1500ms">Mainland Company Setup</h6>
+            <h2 class="title mb-30 wow splt-txt" data-splitting>
+              Gulf Central - Your Trusted Partner for Business Setup in Dubai Mainland
+            </h2>
+            <p class="text wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1500ms">
+              <!-- Business setup in dubai, Businesssetup services, Business setup services in dubai, 
+              Company formation services, company formation services in dubai <br><br> -->
+              Are you looking to establish your business in Mainland, UAE? If so, you’ve arrived at the right place. 
+              At Gulf Central, we provide comprehensive and affordable mainland company formation services in Dubai, 
+              catering to the specific needs of our clients. Our expert team is well-versed in the UAE business 
+              landscape, offering tailored guidance and support throughout the entire process—from documentation 
+              to final setup. With us, you’re not just starting a business; you’re building a foundation for success.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- About area end here -->
+
+<!-- Mainland Company Formation Section Start -->
+<section class="mainland-company-section py-120 bg-light">
+  <div class="container">
+    
+    <!-- Title -->
+    <div class="text-center mb-5"><br><br>
+      <h3 class="fw-bold mb-3">Why Choose Mainland Company Formation in Dubai?</h3>
+      <p class="text-muted lead">
+        Setting up a mainland company in Dubai offers numerous advantages for entrepreneurs 
+        who want growth, flexibility, and global opportunities.
+      </p>
+    </div>
+
+    <!-- Advantages -->
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 shadow-sm border-0 text-center p-4">
+          <i class="fa-solid fa-landmark fa-2x mb-3 text-danger"></i>
+          <h6 class="fw-bold">Constructive Government Policies</h6>
+          <p class="small text-muted">Business-friendly regulations simplify company setup and growth.</p>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 shadow-sm border-0 text-center p-4">
+          <i class="fa-solid fa-file-circle-check fa-2x mb-3 text-danger"></i>
+          <h6 class="fw-bold">Straightforward Setup</h6>
+          <p class="small text-muted">Dubai’s structured framework reduces bureaucratic hurdles.</p>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 shadow-sm border-0 text-center p-4">
+          <i class="fa-solid fa-scale-balanced fa-2x mb-3 text-danger"></i>
+          <h6 class="fw-bold">Supportive Legal Environment</h6>
+          <p class="small text-muted">Laws encourage entrepreneurship and business expansion.</p>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 shadow-sm border-0 text-center p-4">
+          <i class="fa-solid fa-money-bill-wave fa-2x mb-3 text-danger"></i>
+          <h6 class="fw-bold">No Personal Tax</h6>
+          <p class="small text-muted">Zero personal income tax benefits business owners in the UAE.</p>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 shadow-sm border-0 text-center p-4">
+          <i class="fa-solid fa-building fa-2x mb-3 text-danger"></i>
+          <h6 class="fw-bold">Advanced Infrastructure</h6>
+          <p class="small text-muted">State-of-the-art infrastructure supports diverse industries.</p>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 shadow-sm border-0 text-center p-4">
+          <i class="fa-solid fa-hand-holding-dollar fa-2x mb-3 text-danger"></i>
+          <h6 class="fw-bold">No Minimum Capital</h6>
+          <p class="small text-muted">Start your business without heavy upfront investment.</p>
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <div class="card h-100 shadow-sm border-0 text-center p-4">
+          <i class="fa-solid fa-user-shield fa-2x mb-3 text-danger"></i>
+          <h6 class="fw-bold">100% Foreign Ownership</h6>
+          <p class="small text-muted">Full ownership with no local partner or Emirati sponsor required.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gulf Central Support -->
+    <div class="mt-5">
+      <h3 class="fw-bold mb-3">How Gulf Central Helps with LLC Company Formation</h3>
+      <p class="text-muted">We provide end-to-end support to make your company setup journey smooth and stress-free:</p> <br>
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-3">
+          <div class="p-4 text-center bg-white shadow-sm rounded h-100">
+            <i class="fa-solid fa-id-card-clip fa-2x mb-3 text-danger"></i>
+            <h6 class="fw-bold">Trade License Assistance</h6>
+            <p class="small text-muted">Secure the right trade license for your business type.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="p-4 text-center bg-white shadow-sm rounded h-100">
+            <i class="fa-solid fa-passport fa-2x mb-3 text-danger"></i>
+            <h6 class="fw-bold">Visa & PRO Services</h6>
+            <p class="small text-muted">Investor, employee visas & government formalities covered.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="p-4 text-center bg-white shadow-sm rounded h-100">
+            <i class="fa-solid fa-handshake fa-2x mb-3 text-danger"></i>
+            <h6 class="fw-bold">Corporate Sponsorship</h6>
+            <p class="small text-muted">Optional sponsorship for compliance & reduced risks.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="p-4 text-center bg-white shadow-sm rounded h-100">
+            <i class="fa-solid fa-clipboard-list fa-2x mb-3 text-danger"></i>
+            <h6 class="fw-bold">Tailored Licensing</h6>
+            <p class="small text-muted">Guidance on Professional, Commercial & Industrial licenses.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Documents Required -->
+    <div class="mt-5">
+      <h3 class="fw-bold mb-3">Documents Required for Company Setup</h3> <br>
+      <ul class="list-group list-group-flush shadow-sm">
+        <li class="list-group-item">✅ Passport copies of shareholders or partners</li>
+        <li class="list-group-item">✅ Proposed business names (minimum six options)</li>
+        <li class="list-group-item">✅ Completed application form & one passport-size photo</li>
+        <li class="list-group-item">✅ NOC from sponsor (if UAE resident employee)</li>
+      </ul>
+    </div>
+
+    <!-- Why Gulf Central -->
+    <div class="mt-5">
+      <h3 class="fw-bold mb-3">Why Gulf Central?</h3> <br>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="p-4 bg-white shadow-sm rounded h-100">
+            <h6 class="fw-bold text-danger">✔ Comprehensive Support</h6>
+            <p class="small text-muted">From consultation to licensing, we cover the entire process.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="p-4 bg-white shadow-sm rounded h-100">
+            <h6 class="fw-bold text-danger">✔ Expert Team</h6>
+            <p class="small text-muted">Experienced professionals who understand UAE business laws.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="p-4 bg-white shadow-sm rounded h-100">
+            <h6 class="fw-bold text-danger">✔ Transparent Process</h6>
+            <p class="small text-muted">Clear pricing and advice with no hidden fees.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="p-4 bg-white shadow-sm rounded h-100">
+            <h6 class="fw-bold text-danger">✔ Confidentiality</h6>
+            <p class="small text-muted">Your business information is secure and private at all times.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Call to Action -->
+  <br>
+  </div>
+</section>
+<!-- Mainland Company Formation Section End -->
+
+  <!-- Page Contact area start here -->
+    <section class="contact-details pt-120 pb-120">
+      <div class="container">
+        <div class="row g-5">
+          <div class="col-md-6 col-lg-4 wow fadeInLeft" data-wow-delay="00ms" data-wow-duration="1500ms">
+           
+        </div>
+        <div class="mt-100">
+          <div class="row g-5">
+            <div class="col-lg-6 content-column">
+              <div class="inner-column">
+                <div class="sec-title mb-30">
+                  <h2 class="title wow splt-txt" data-splitting>Get in touch</h2>
+                                     We simplify company formation in the UAE, handling all legal procedures and documentation 
+                    <br>
+                    so you can focus on growing your business with confidence.
+                  </p>
+                </div>
+                <div class="google-map">
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d57800.04549865931!2d55.1661818356217!3d25.118685222050836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x3e5f6bc849cbd403%3A0xb37d2f93b198a7b0!2sGround%20floor%2C%20The%20Iridium%20-%20Kiosk%202B%20-%20Al%20Barsha%20-%20Al%20Barsha%201%20-%20Dubai%20-%20United%20Arab%20Emirates!3m2!1d25.1186132!2d55.207381399999996!5e0!3m2!1sen!2sin!4v1757906621325!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+              </div>
+            </div>
+
+           
+
+            <div class="col-lg-6 content-column">
+  <div class="inner-column right-column">
+    <div class="sec-title mb-30">
+      <h2 class="title wow splt-txt" data-splitting>Fill Up The Form</h2>
+      <p class="text wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1500ms">
+        <!-- Your email address will not be published. Required fields are marked * --> *
+      </p>
+    </div>
+
+    <!-- 🚀 Toast Container (Top Right, above form) -->
+    <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 2000;">
+      {% if messages %}
+        {% for message in messages %}
+          <div class="toast align-items-center text-white 
+                      {% if message.tags == 'success' %} bg-success 
+                      {% elif message.tags == 'error' %} bg-danger 
+                      {% else %} bg-secondary {% endif %}
+                      border-0 mb-2 shadow" 
+               role="alert" aria-live="assertive" aria-atomic="true"
+               data-bs-autohide="true" data-bs-delay="4000">
+            <div class="d-flex">
+              <div class="toast-body">
+                {{ message }}
+              </div>
+              <button type="button" class="btn-close btn-close-white me-2 m-auto" 
+                      data-bs-dismiss="toast"></button>
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+
+    <!-- 🚀 Contact Form -->
+    <form method="post" action="{% url 'mainland' %}">
+      {% csrf_token %}
+      {{ form.non_field_errors }}
+
+      <div class="type-feild">
+        <i class="fa-light fa-user"></i>
+        {{ form.name }}
+      </div>
+
+      <div class="type-feild">
+        <i class="fa-light fa-phone"></i>
+        {{ form.phone }}
+      </div>
+
+      <div class="type-feild">
+        <i class="fa-light fa-envelope"></i>
+        {{ form.email }}
+      </div>
+
+      <div class="type-feild">
+        <i class="fa-light fa-pen-to-square"></i>
+        {{ form.message }}
+      </div>
+
+      <button type="submit" class="btn-two">
+        <i class="fa-light fa-paper-plane"></i> Get In Touch
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- 🚀 Script to auto-show toasts -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+    toastElList.map(function (toastEl) {
+      return new bootstrap.Toast(toastEl).show()
+    });
+  });
+</script>
+
+        </div>
+      </div>
+    </section>
+    <!-- Page Contact area end here -->
+
+
+
+
+
+
+
+
+<!-- Custom CSS -->
+<style>
+  .custom-container {
+    max-width: 1400px; /* Default Bootstrap is 1140px, this makes it wider */
+  }
+</style>
+
+
+  <!--Project Details End-->
+
+    <!-- Main Footer -->
+  <footer class="main-footer footer-style-three pt-100">
+    <div class="container">
+      <div class="footer-cta" style="background-color: #fff;">
+       <div class="sec-title">
+  <h2 class="title wow splt-txt" data-splitting>Need Business Setup & Consultancy in the Gulf?</h2>
+  <p class="text wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
+    Gulf Central offers expert business setup, legal support, and corporate consultancy to help your company start and grow with ease.
+  </p>
+</div>
+        <div class="btn-wrp wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1500ms">
+          <a href="{% url 'contact' %}" style="background-color: #D3202A; color: #fff;" class="cta-btn">Get Started Free <i class="fa-regular fa-arrow-up-right"></i></a>
+         
+        </div>
+      <div class="bg-shape">
+    <img src="{% static 'images/shape/cta-line.png' %}" alt="Image">
+</div>
+<div class="arry">
+    <img class="animation__arryLeftRight" src="{% static 'images/shape/cta-arry.png' %}" alt="Image">
+</div>
+      </div>
+      <div class="widgets-section">
+        <div class="row g-5 g-xl-0">
+          <div class="col-lg-4 footer-column">
+            <div class="footer-widget about-widget">
+              <div class="logo">
+                  <a href="{% url 'index' %}"><img src="{% static 'images/logo12.png' %}" alt="Logo"></a>
+              </div>
+              <div class="widget-content">
+          <p class="text" style="color: #fff;">Gulf Central provides expert business setup, legal support, and consultancy services to help your business thrive in the Gulf region.</p>
+
+              
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-8">
+            <div class="row g-4 g-xl-0">
+              <div class="col-sm-6 col-xl-4 footer-column">
+              <div class="footer-widget links-widget">
+                <h4 class="widget-title">Resource</h4>
+                <div class="widget-content">
+                  <ul class="user-links">
+                  {% for service_footers in service_footer %}
+                    <li>
+                      <a href="{% url 'service_details' service_footers.slug %}">{{ service_footers.name }}</a>
+                    </li>
+                  {% endfor %}
+                </ul>
+                </div>
+              </div>
+            </div>
+             <div class="col-sm-6 col-xl-4 footer-column">
+                <div class="footer-widget links-widget">
+                  <h4 class="widget-title">Quick Links </h4>
+                  <div class="widget-content">
+                    <ul class="user-links">
+                      <!-- Quick Links -->
+                      <li><a href="{% url 'about' %}">About</a></li>
+                      <li><a href="{% url 'blogs'%}">Blogs</a></li>
+                      <li><a href="{% url 'news'%}">News</a></li>
+                      <li><a href="{% url 'cost_calculator'%}">Cost Calculator</a></li>
+                      
+                      <!-- Company Links -->
+                    
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-xl-3 footer-column">
+                <div class="footer-widget links-widget contact-widget">
+                  <h4 class="widget-title">Contact</h4>
+                  <div class="widget-content">
+                    <ul class="user-links">
+                      <li>
+                        <i class="fa-light fa-location-dot" style="color: white;" ></i>
+                        <a href="#0"> Ground floor, The Iridium - Kiosk 2B - Al Barsha 1 - Dubai</a>
+                      </li>
+                      <li>
+  <i class="fa-light fa-envelope" style="color: white;"></i>
+  <a href="mailto:office@gulfcentral.ae">office@gulfcentral.ae</a>
+</li>
+<li>
+  <i class="fa-light fa-phone-flip" style="color: white;"></i>
+  <a href="tel:+971568047000">+971 56 804 7000</a>
+</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+     <p class="copyright-text">
+  Copyright ©2025, <a href="https://vynzora.com" target="_blank">Vynzora</a> All Rights Reserved
+</p>
+        <ul class="footer-nav">
+          <li><a href="{% url 'terms-and-conditions' %}">Terms & Conditions</a></li>
+          
+          <li><a href="{% url 'privacy-and-policy' %}">Privacy & Policy</a></li>
+          <li><a href="{% url  'contact' %}">Contact</a></li>
+        </ul>
+        <button style="background-color: #fff;" class="goTop-btn"><i class="fa-solid fa-angles-up" style="color:#D3202A;"></i> <i class="fa-solid fa-angles-up" style="color:#D3202A;"></i></i></button>
+      </div>
+    </div>
+    <div class="sec-shape">
+        <img class="animation__rotateY"
+       src="{% static 'images/shape/dual-circle420.png' %}"
+       alt="Image">
+    </div>
+    <div class="box-shape">
+      <div class="box1 wow slideInUp" data-wow-delay="200ms" data-wow-duration="1500ms"></div>
+      <div class="box2 wow slideInLeft" data-wow-delay="200ms" data-wow-duration="1500ms"></div>
+    </div>
+  </footer>
+  <!--End Main Footer -->
+
+
+  </div><!-- End Page Wrapper -->
+
+
+<!-- Cloudflare script stays the same -->
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+
+<!-- jQuery script from static folder -->
+<script src="{% static 'js/jquery.js' %}"></script>
+
+ 
+<!-- JavaScript Files -->
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/slick.min.js' %}"></script>
+<script src="{% static 'js/slick-animation.min.js' %}"></script>
+<script src="{% static 'js/jquery.fancybox.js' %}"></script>
+<script src="{% static 'js/wow.js' %}"></script>
+<script src="{% static 'js/appear.js' %}"></script>
+<script src="{% static 'js/mixitup.js' %}"></script>
+<script src="{% static 'js/flatpickr.js' %}"></script>
+<script src="{% static 'js/swiper.min.js' %}"></script>
+<script src="{% static 'js/gsap.min.js' %}"></script>
+<script src="{% static 'js/ScrollTrigger.min.js' %}"></script>
+<script src="{% static 'js/SplitText.min.js' %}"></script>
+<script src="{% static 'js/nice-select.min.js' %}"></script>
+<script src="{% static 'js/knob.js' %}"></script>
+<script src="{% static 'js/parallax.js' %}"></script>
+<script src="{% static 'js/vanilla-tilt.js' %}"></script>
+<script src="{% static 'js/splitting.js' %}"></script>
+<script src="{% static 'js/splitType.js' %}"></script>
+<script src="{% static 'js/script-gsap.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+</body>
+
+</html>

@@ -1,0 +1,95 @@
+{% extends "admin_pages/base.html" %}
+{% load static %}
+
+{% block content %}
+<style>
+  .table-responsive-custom {
+    max-height: 70vh; /* adjust table height */
+    overflow: auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+
+  .table-responsive-custom thead th {
+    position: sticky;
+    top: 0;
+    background-color: #343a40;
+    color: #fff;
+    z-index: 10;
+  }
+
+  .table td, .table th {
+    vertical-align: middle;
+  }
+
+  .table img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+  }
+
+  @media (max-width: 768px) {
+    .table td, .table th {
+      white-space: nowrap;
+    }
+  }
+</style>
+
+<div class="container mt-4">
+  <h3>Client Reviews</h3> <br>
+  <a href="{% url 'add_client_review' %}" 
+     class="btn btn-success mb-3" 
+     style="background-color: rgb(28, 75, 163); border-color: rgb(28, 75, 163);">
+     Add Client Review
+  </a>
+
+  <div class="table-responsive-custom">
+    <table class="table table-bordered table-striped table-hover">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Client Name</th>
+          <th>Designation</th>
+          <th>Review</th>
+          <th>Client Image</th>
+          <th>Update</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for client_review in client_reviews %}
+        <tr>
+          <td>{{ forloop.counter }}</td>
+          <td style="width: 150px;">{{ client_review.client_name }}</td>
+          <td style="width: 150px;">{{ client_review.designation }}</td>
+          <td style="max-width: 500px; word-wrap: break-word; overflow-wrap: break-word; white-space: normal; max-height: 150px; overflow: auto; padding: 8px;">
+            {{ client_review.review }}
+          </td>
+          <td style="width: 150px;">
+            {% if client_review.client_image %}
+              <img src="{{ client_review.client_image.url }}" alt="Client Image">
+            {% else %}
+              <p>No Image</p>
+            {% endif %}
+          </td>
+          <td>
+            <a href="{% url 'update_client_review' client_review.id  %}" class="btn btn-warning btn-sm">
+              Update
+            </a>
+          </td>
+          <td>
+            <a href="{% url 'delete_client_review' client_review.id  %}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">
+              Delete
+            </a>
+          </td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="7" class="text-center">No Reviews available.</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
