@@ -296,6 +296,11 @@ def ajax_search_services(request):
     return JsonResponse([], safe=False)
 
 
+#  404 view\
+def page_404(request, exception):
+    return render(request, '404.html', status=404)
+
+
 
 # Admin Side
 @csrf_protect
