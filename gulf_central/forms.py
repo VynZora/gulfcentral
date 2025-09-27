@@ -127,3 +127,20 @@ class EnquiryForm(forms.ModelForm):
     class Meta:
         model = Enquiry
         fields = ['name', 'email', 'phone', 'setup_type', 'message']
+
+
+
+from django import forms
+from .models import BlogMessage
+
+class BlogMessageForm(forms.ModelForm):
+    class Meta:
+        model = BlogMessage
+        fields = ['name', 'mobile', 'email', 'blog_name', 'message']
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter your name'}),
+            'mobile': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter your mobile number'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Enter your email'}),
+            'blog_name': forms.TextInput(attrs={'class': 'form-control', 'readonly': 'readonly'}),
+            'message': forms.Textarea(attrs={'class': 'form-control', 'rows': 5, 'placeholder': 'Write your message'}),
+        }

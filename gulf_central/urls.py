@@ -24,6 +24,8 @@ urlpatterns = [
 
     path('blogs/', views.blogs, name= 'blogs'),
     path('blogs/<int:pk>/', views.blog_detail, name='blog_detail'), 
+    path("blog-messages/", views.view_blog_messages, name="view_blog_messages"),
+    path("blog-messages/delete/<int:pk>/", views.delete_blog_message, name="delete_blog_message"),
 
 
      path('submit-enquiry/', views.submit_enquiry, name='submit_enquiry'),

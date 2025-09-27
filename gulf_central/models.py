@@ -257,3 +257,15 @@ class Enquiry(models.Model):
 
     def __str__(self):
         return f"{self.name} - {self.email}"
+
+
+class BlogMessage(models.Model):
+    name = models.CharField(max_length=200)
+    mobile = models.CharField(max_length=15)
+    email = models.EmailField()
+    blog_name = models.CharField(max_length=255)
+    message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Message from {self.name} - {self.blog_name}"

@@ -25,14 +25,6 @@
     vertical-align: middle;
   }
 
-  /* Image styling */
-  .team-image {
-    height: 100px;
-    width: 100px;
-    object-fit: cover;
-    border-radius: 50%;
-  }
-
   /* Responsive horizontal scroll */
   @media (max-width: 768px) {
     .table td, .table th {
@@ -42,35 +34,39 @@
 </style>
 
 <div class="container mt-4">
-  <h3>Our Team</h3>
-  <a href="{% url 'add_team' %}" class="btn btn-success mb-3" style="background-color: rgb(23, 23, 105);">Add Team Member</a>
+  <h3>Blog Messages</h3>
 
   <div class="table-responsive-custom">
     <table class="table table-bordered table-striped table-hover">
       <thead>
         <tr>
           <th>#</th>
-          <th>Image</th>
           <th>Name</th>
-          <th>Designation</th>
+          <th>Mobile</th>
+          <th>Email</th>
+          <th>Blog</th>
+          <th>Message</th>
+          <th>Submitted At</th>
           <th>Actions</th>
         </tr>
       </thead>
       <tbody>
-        {% for member in teams %}
+        {% for msg in blog_messages %}
         <tr>
           <td>{{ forloop.counter }}</td>
-          <td><img src="{{ member.image.url }}" class="team-image" alt="{{ member.name }}"></td>
-          <td>{{ member.name }}</td>
-          <td>{{ member.designation }}</td>
+          <td>{{ msg.name }}</td>
+          <td>{{ msg.mobile }}</td>
+          <td>{{ msg.email }}</td>
+          <td>{{ msg.blog_name }}</td>
+          <td>{{ msg.message|truncatewords:15 }}</td>
+            <td>{{ msg.created_at|date:"M d, Y" }}</td>
           <td>
-            <a href="{% url 'update_team' member.id %}" class="btn btn-warning btn-sm mb-1">Edit</a>
-            <a href="{% url 'delete_team' member.id %}" class="btn btn-danger btn-sm mb-1">Delete</a>
+            <a href="{% url 'delete_blog_message' msg.id %}" class="btn btn-danger btn-sm">Delete</a>
           </td>
         </tr>
         {% empty %}
         <tr>
-          <td colspan="5" class="text-center">No team members found</td>
+          <td colspan="8" class="text-center">No messages found.</td>
         </tr>
         {% endfor %}
       </tbody>

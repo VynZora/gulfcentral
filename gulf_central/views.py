@@ -7,8 +7,8 @@ import random
 
 from .models import Menu, Category, Service, News, ClientReview, ServiceProcessStep, ServiceFAQ, BlogCategory, Blog, PricingSection, PricingPlan, PlanFeature
 from .forms import NewsForm, MenuForm, CategoryForm, ServiceForm, ClientReviewForm, BlogCategoryForm, BlogForm
-from .forms import ContactForm, ServiceEnquiryForm, TeamForm, ClientLogoForm, EnquiryForm
-from .models import Contact, ServiceEnquiry, Team, ClientLogo, Enquiry
+from .forms import ContactForm, ServiceEnquiryForm, TeamForm, ClientLogoForm, EnquiryForm, BlogMessageForm
+from .models import Contact, ServiceEnquiry, Team, ClientLogo, Enquiry,BlogMessage
 
 
 
@@ -52,15 +52,7 @@ def consultancy_expert_form(request):
     return render(request, "index.html", {"form": form})
 
 
-# Consultancy Expert Enquiries List Page
-def consultancy_expert_list(request):
-    enquiries = Enquiry.objects.all().order_by("-created_at")
-    return render(request, "admin_pages/view_enquiries.html", {"enquiries": enquiries})
 
-def delete_enquiries(request, enquiry_id):
-    enquiry = get_object_or_404(Enquiry, id=enquiry_id)
-    enquiry.delete()
-    return redirect("consultancy_expert_list") 
 
 # News listing page
 def news(request):
@@ -112,20 +104,36 @@ def blogs(request):
 def blog_detail(request, pk):
     menus = Menu.objects.prefetch_related('categories__services').all()
     blog = get_object_or_404(Blog, pk=pk)
-    latest_blogs = Blog.objects.exclude(pk=pk)[:6]  # 3 latest posts excluding current
+    latest_blogs = Blog.objects.exclude(pk=pk)[:6]  # 6 latest posts excluding current
+    
+    # Random 6 categories
     categories = list(BlogCategory.objects.all())
     random.shuffle(categories)
     categories = categories[:6] 
+
+    # Random 4 services for footer
     service_footer = list(Service.objects.values('name', 'slug'))
     random_services = random.sample(service_footer, min(4, len(service_footer)))
+
+    # Handle contact form
+    if request.method == "POST":
+        form = BlogMessageForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Your message has been sent successfully!")
+            return redirect('blog_detail', pk=blog.id)  # Fixed: use pk not blog_id
+    else:
+        form = BlogMessageForm(initial={'blog_name': blog.title})
     
     return render(request, "blog-details.html", {
         "menus": menus,
         "blog": blog,
         "latest_blogs": latest_blogs,
         "categories": categories,
-        'service_footer':random_services
+        "service_footer": random_services,
+        "form": form,
     })
+
 
 
 
@@ -983,4 +991,26 @@ def delete_client_logo(request, pk):
     client.delete()
     return redirect('view_client_logos')
 
+@login_required(login_url='user_login')
+def consultancy_expert_list(request):
+    enquiries = Enquiry.objects.all().order_by("-created_at")
+    return render(request, "admin_pages/view_enquiries.html", {"enquiries": enquiries})
 
+@login_required(login_url='user_login')
+def delete_enquiries(request, enquiry_id):
+    enquiry = get_object_or_404(Enquiry, id=enquiry_id)
+    enquiry.delete()
+    return redirect("consultancy_expert_list")
+
+@login_required(login_url='user_login')
+def view_blog_messages(request):
+    blog_messages = BlogMessage.objects.all().order_by('-created_at')
+    return render(request, "admin_pages/view_blog_messages.html", {
+        "blog_messages": blog_messages
+    })
+@login_required(login_url='user_login')
+def delete_blog_message(request, pk):
+    message_obj = get_object_or_404(BlogMessage, pk=pk)
+    message_obj.delete()
+    messages.success(request, "Blog message deleted successfully!")
+    return redirect('view_blog_messages')

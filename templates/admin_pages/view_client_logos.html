@@ -26,7 +26,7 @@
           </td>
           <td>
             <a href="{% url 'update_client_logo' client.id %}" class="btn btn-warning btn-sm mb-1">Edit</a>
-            <a href="{% url 'delete_client_logo' client.id %}" class="btn btn-danger btn-sm mb-1" onclick="return confirm('Are you sure you want to delete this client?');">Delete</a>
+            <a href="{% url 'delete_client_logo' client.id %}" class="btn btn-danger btn-sm mb-1">Delete</a>
           </td>
         </tr>
         {% empty %}

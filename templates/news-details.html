@@ -570,9 +570,103 @@ document.addEventListener('DOMContentLoaded', function () {
                     <h2 class="title mb-20">{{ news.name }}</h2>
 
                     <!-- News Description -->
-                    <div class="description mb-30">
-    <p>{{ news.description|safe }}</p>
+                         <div class="blog-details__text-2">
+    {{ news.description|safe }}
 </div>
+<style>
+.blog-details__text-2 {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #333;
+}
+
+.blog-details__text-2 p {
+  margin-bottom: 1rem;
+}
+
+/* Bold & Italic */
+.blog-details__text-2 strong,
+.blog-details__text-2 b {
+  font-weight: 600;
+  color: #000;
+}
+
+.blog-details__text-2 em,
+.blog-details__text-2 i {
+  font-style: italic;
+  color: #444;
+}
+
+/* Bullet & Number Lists */
+.blog-details__text-2 ul,
+.blog-details__text-2 ol {
+  margin: 1rem 0 1rem 1.5rem;
+  padding-left: 1.5rem !important;  /* force indent */
+}
+
+.blog-details__text-2 ul {
+  list-style-type: disc !important;    /* ● bullets */
+}
+
+.blog-details__text-2 ol {
+  list-style-type: decimal !important; /* 1. 2. 3. */
+}
+
+.blog-details__text-2 li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+/* Tables */
+.blog-details__text-2 table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+}
+
+.blog-details__text-2 th,
+.blog-details__text-2 td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+.blog-details__text-2 th {
+  background-color: #f5f5f5;
+  font-weight: 600;
+}
+
+/* Images */
+.blog-details__text-2 img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin: 1rem 0;
+  display: block;
+}
+
+.blog-details__text-2 ul,
+.blog-details__text-2 ol {
+  margin: 1rem 0 1rem 1.5rem;
+  padding-left: 1.8rem !important;   /* force indent */
+  list-style-position: outside !important;
+}
+
+.blog-details__text-2 ul {
+  list-style-type: disc !important;      /* ● bullets */
+}
+
+.blog-details__text-2 ol {
+  list-style-type: decimal !important;   /* 1. 2. 3. */
+}
+
+.blog-details__text-2 li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+  display: list-item !important;   /* force browser to treat as list item */
+}
+
+</style>
 
                     <!-- Back Button -->
                     <div class="back-button mb-30">
