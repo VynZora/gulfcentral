@@ -604,7 +604,7 @@ document.addEventListener('DOMContentLoaded', function () {
         <div class="services-details__content position-relative my-5">
           
           {% if service.image %}
-          <img src="{{ service.image.url }}" style="margin-top: -50px;" alt="{{ service.name }}">
+          <img src="{{ service.image.url }}" style="margin-top: -50px; width: 100%; height: 700px; object-fit: cover;" alt="{{ service.name }}">
           {% else %}
           <img src="{% static 'images/default-service.jpg' %}" alt="Default Service">
           {% endif %}
