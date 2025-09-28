@@ -577,104 +577,142 @@ document.addEventListener('DOMContentLoaded', function () {
               <li><i class="fas fa-calendar"></i> {{ blog.created_date|date:"d M, Y" }}</li>
             </ul>
             <h3 class="blog-details__title">{{ blog.title }}</h3>
-        <div class="blog-details__text-2">
-    {{ blog.description|safe }}
+        <div class="editor-output mb-30">
+  {{ blog.description|safe }}
 </div>
+
 <style>
-.blog-details__text-2 {
-  font-size: 1rem;
-  line-height: 1.7;
-  color: #333;
-}
-
-.blog-details__text-2 p {
-  margin-bottom: 1rem;
-}
-
-/* Bold & Italic */
-.blog-details__text-2 strong,
-.blog-details__text-2 b {
-  font-weight: 600;
-  color: #000;
-}
-
-.blog-details__text-2 em,
-.blog-details__text-2 i {
-  font-style: italic;
-  color: #444;
-}
-
-/* Bullet & Number Lists */
-.blog-details__text-2 ul,
-.blog-details__text-2 ol {
-  margin: 1rem 0 1rem 1.5rem;
-  padding-left: 1.5rem !important;  /* force indent */
-}
-
-.blog-details__text-2 ul {
-  list-style-type: disc !important;    /* ● bullets */
-}
-
-.blog-details__text-2 ol {
-  list-style-type: decimal !important; /* 1. 2. 3. */
-}
-
-.blog-details__text-2 li {
-  margin-bottom: 0.5rem;
+/* CKEditor content container */
+.editor-output {
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 16px;
   line-height: 1.6;
+  color: #333;
+  display: block;
+}
+
+/* Text formatting */
+.editor-output b,
+.editor-output strong { font-weight: bold !important; }
+.editor-output i,
+.editor-output em { font-style: italic !important; }
+.editor-output u { text-decoration: underline !important; }
+.editor-output s,
+.editor-output strike { text-decoration: line-through !important; }
+.editor-output sup { vertical-align: super; font-size: 0.8em; }
+.editor-output sub { vertical-align: sub; font-size: 0.8em; }
+
+/* Headings */
+.editor-output h1,
+.editor-output h2,
+.editor-output h3,
+.editor-output h4,
+.editor-output h5,
+.editor-output h6 {
+  font-weight: 600;
+  margin: 1em 0 0.5em;
+}
+
+/* Paragraph spacing */
+.editor-output p {
+  margin-bottom: 1rem;
+  text-align: justify;
+}
+
+/* ===== Lists (ul, ol) ===== */
+.editor-output ul,
+.editor-output ol {
+  padding-left: 2rem !important;
+  margin-bottom: 1rem !important;
+  list-style-position: outside !important;
+}
+
+/* Force list items and markers */
+.editor-output li {
+  display: list-item !important;
+  margin-bottom: 0.5rem;
+  list-style: initial !important; /* ensures markers appear */
+}
+
+/* Bullet and number marker color */
+.editor-output ul li::marker,
+.editor-output ol li::marker {
+  color: #000 !important;
+  font-weight: bold;
+  font-size: 1em;
+}
+
+/* Unordered nested lists */
+.editor-output ul ul { list-style-type: circle !important; padding-left: 1.5rem; }
+.editor-output ul ul ul { list-style-type: square !important; padding-left: 1.5rem; }
+
+/* Ordered nested lists */
+.editor-output ol { list-style-type: decimal !important; }
+.editor-output ol ol { list-style-type: lower-alpha !important; padding-left: 1.5rem; }
+.editor-output ol ol ol { list-style-type: lower-roman !important; padding-left: 1.5rem; }
+
+/* Force numbers to appear in all browsers */
+.editor-output ol li {
+  list-style-type: decimal !important;
+}
+
+/* Blockquotes */
+.editor-output blockquote {
+  border-left: 4px solid #0073e6;
+  padding-left: 1rem;
+  color: #555;
+  font-style: italic;
+  margin: 1rem 0;
+  background: #f9f9f9;
 }
 
 /* Tables */
-.blog-details__text-2 table {
+.editor-output table {
   width: 100%;
   border-collapse: collapse;
-  margin: 1.5rem 0;
+  margin: 1rem 0;
 }
-
-.blog-details__text-2 th,
-.blog-details__text-2 td {
+.editor-output table th,
+.editor-output table td {
   border: 1px solid #ddd;
   padding: 10px;
   text-align: left;
 }
-
-.blog-details__text-2 th {
-  background-color: #f5f5f5;
+.editor-output table th {
+  background: #f2f2f2;
   font-weight: 600;
 }
+.editor-output table tr:nth-child(even) { background: #fafafa; }
+.editor-output table tr:hover { background: #f5f5f5; }
 
 /* Images */
-.blog-details__text-2 img {
+.editor-output img {
   max-width: 100%;
   height: auto;
-  border-radius: 6px;
-  margin: 1rem 0;
   display: block;
+  margin: 1rem 0;
+  border-radius: 6px;
 }
 
-.blog-details__text-2 ul,
-.blog-details__text-2 ol {
-  margin: 1rem 0 1rem 1.5rem;
-  padding-left: 1.8rem !important;   /* force indent */
-  list-style-position: outside !important;
-}
+/* Figures */
+.editor-output figure { margin: 1.2rem 0; text-align: center; }
+.editor-output figure img { margin: 0 auto; }
+.editor-output figcaption { font-size: 0.9rem; color: #666; margin-top: 0.3rem; }
 
-.blog-details__text-2 ul {
-  list-style-type: disc !important;      /* ● bullets */
+/* Side images */
+.editor-output .image-style-side {
+  float: right;
+  margin: 0 0 1rem 1rem;
+  max-width: 45%;
 }
-
-.blog-details__text-2 ol {
-  list-style-type: decimal !important;   /* 1. 2. 3. */
+@media (max-width: 768px) {
+  .editor-output .image-style-side {
+    float: none;
+    margin: 1rem auto;
+    max-width: 100%;
+  }
 }
-
-.blog-details__text-2 li {
-  margin-bottom: 0.5rem;
-  line-height: 1.6;
-  display: list-item !important;   /* force browser to treat as list item */
-}
-
 </style>
-
 
           </div>
         </div>
