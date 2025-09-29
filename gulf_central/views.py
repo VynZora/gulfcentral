@@ -147,12 +147,12 @@ def cost_calculator(request):
         "menus": menus,'service_footer':random_services })
 
 from django.contrib import messages
-
 def submit_enquiry(request):
     if request.method == "POST":
-        print("POST DATA:", request.POST)  # 👈 Add this for debugging
+        print("POST DATA:", request.POST)  # 👈 Debugging
 
-        CostCalculatorEnquiry.objects.create(
+        # Save enquiry to DB
+        enquiry = CostCalculatorEnquiry.objects.create(
             business_activity=request.POST.get('business_activity'),
             jurisdiction=request.POST.get('jurisdiction'),
             sponsorship=request.POST.get('sponsorship', ''),
@@ -166,8 +166,44 @@ def submit_enquiry(request):
             nationality=request.POST.get('nationality'),
             message=request.POST.get('message'),
         )
-        messages.success(request, "Enquiry submitted successfully!")
+
+        # Prepare email details
+        subject = f"New Business Cost Calculator Enquiry from {enquiry.name}"
+        body = f"""
+        New enquiry :
+
+        Business Activity: {enquiry.business_activity}
+        Jurisdiction: {enquiry.jurisdiction}
+        Sponsorship: {enquiry.sponsorship}
+        Owners: {enquiry.owners}
+        Visas: {enquiry.visas}
+        Office Required: {enquiry.office_required}
+        Company Name: {enquiry.company_name}
+
+        Name: {enquiry.name}
+        Email: {enquiry.email}
+        Phone: {enquiry.phone}
+        Nationality: {enquiry.nationality}
+
+        Message:
+        {enquiry.message}
+                """
+
+        try:
+            send_mail(
+                subject,
+                body,
+                'ad3in1234@gmail.com',       # Sender email
+                ['ad3in1234@gmail.com'],     # Recipient email (your inbox)
+                fail_silently=False,
+            )
+            messages.success(request, "Enquiry submitted successfully! We'll contact you soon.")
+        except Exception as e:
+            print("Email sending error:", e)
+            messages.error(request, "Your enquiry was saved, but email could not be sent.")
+
         return redirect('cost_calculator')
+
     return redirect('cost_calculator')
 
 
@@ -271,21 +307,60 @@ def privacy_and_policy(request):
     return render(request, 'privacy_and_policy.html',{'menus': menus,'service_footer':random_services})
 
 
+from django.core.mail import send_mail
 def contact(request):
+    # Fetch menus and random services for footer
     menus = Menu.objects.prefetch_related('categories__services').all()
     service_footer = list(Service.objects.values('name', 'slug'))
     random_services = random.sample(service_footer, min(4, len(service_footer)))
+
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
-            form.save()
-            messages.success(request, "Your message has been sent successfully!")
+            # Save form data to DB
+            contact_instance = form.save(commit=False)
+            contact_instance.save()
+
+            # Prepare email details
+            name = form.cleaned_data['name']
+            phone = form.cleaned_data['phone']
+            email = form.cleaned_data['email']
+            message_text = form.cleaned_data['message']
+
+            subject = f"New Contact Form Submission from {name}"
+            body = f"""
+            Name: {name}
+            Phone: {phone}
+            Email: {email}
+            Message:
+            {message_text}
+                        """
+
+            try:
+                send_mail(
+                    subject,
+                    body,
+                    'ad3in1234@gmail.com',   # sender email (DEFAULT_FROM_EMAIL)
+                    ['ad3in1234@gmail.com'], # recipient email (your inbox)
+                    fail_silently=False,
+                )
+                messages.success(request, "Your message has been sent successfully!")
+            except Exception as e:
+                messages.error(request, "An error occurred while sending your message. Please try again.")
+
             return redirect('contact')
         else:
             messages.error(request, "Please correct the errors below.")
     else:
         form = ContactForm()
-    return render(request, 'contact.html', {'form': form, 'menus': menus,'service_footer':random_services})
+
+    return render(request, 'contact.html', {
+        'form': form,
+        'menus': menus,
+        'service_footer': random_services
+    })
+
+
 
 
 

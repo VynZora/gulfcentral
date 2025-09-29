@@ -26,10 +26,10 @@
 
 <body>
   <div class="page-wrapper">
-    <script>
+    <!-- <script>
 (function(){var e=document;e.addEventListener("contextmenu",function(e){e.preventDefault()});e.addEventListener("keydown",function(e){if(e.key==="F12")e.preventDefault();if(e.ctrlKey&&e.shiftKey&&["I","J","C"].includes(e.key.toUpperCase()))e.preventDefault();if(e.ctrlKey&&["U","S"].includes(e.key.toUpperCase()))e.preventDefault()});setInterval(function(){if(window.outerWidth-window.innerWidth>200||window.outerHeight-window.innerHeight>200){document.body.innerHTML="<h1 style='text-align:center;color:red;margin-top:20%'>⚠️ Access Denied</h1>"}},1e3)})();
 </script>
-<style>body{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}</style>
+<style>body{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}</style> -->
 
     <!-- Preloader -->
     <div class="preloader"></div>
@@ -583,17 +583,156 @@ document.addEventListener('DOMContentLoaded', function () {
     <form id="multi-step-form" method="POST" action="{% url 'submit_enquiry' %}">
       {% csrf_token %}
 
-      <!-- Step 1: Business Activity -->
-      <div class="form-step active">
-        <div class="step-header">Step 1 of 7</div><br>
-        <h2>Which Business activity are you looking for?</h2>
-        <div class="form-group">
-          <input type="text" id="business_activity" name="business_activity" required minlength="2" placeholder="e.g., Advertising, E-Commerce">
+    <!-- Step 1: Business Activity -->
+<div class="form-step active">
+    <div class="step-header">Step 1 of 7</div><br>
+    <h2>Which Business activity are you looking for?</h2>
+
+    <div class="form-group" style="max-width:400px; margin:auto; position:relative;">
+        <!-- Trigger button -->
+        <button type="button" id="selectTrigger" class="select-btn">Select your business activity</button>
+        <!-- Hidden input -->
+        <input type="hidden" name="business_activity" id="business_activity_input" required>
+    </div>
+
+    <div class="buttons">
+        <button type="button" class="next-step">Next</button>
+    </div>
+</div>
+
+<!-- Modal popup -->
+<div id="selectModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="options-list">
+            <div data-value="Advertising">Advertising</div>
+            <div data-value="Architecture">Architecture</div>
+            <div data-value="Business Consultancy">Business Consultancy</div>
+            <div data-value="Design Services">Design Services</div>
+            <div data-value="E-Commerce">E-Commerce</div>
+            <div data-value="Event Management">Event Management</div>
+            <div data-value="Fashion Design Consultancy">Fashion Design Consultancy</div>
+            <div data-value="Food & Beverage Trading">Food & Beverage Trading</div>
+            <div data-value="General Trading">General Trading</div>
+            <div data-value="Human Resources Consultancy">Human Resources Consultancy</div>
+            <div data-value="Interior Design">Interior Design</div>
+            <div data-value="IT Consultancy">IT Consultancy</div>
+            <div data-value="Lifestyle Consultancy">Lifestyle Consultancy</div>
+            <div data-value="Management Consultancy">Management Consultancy</div>
+            <div data-value="Marketing Services">Marketing Services</div>
+            <div data-value="Media Services">Media Services</div>
+            <div data-value="Online Education">Online Education</div>
+            <div data-value="Other">Other</div>
+            <div data-value="Photography Services">Photography Services</div>
+            <div data-value="Production">Production</div>
+            <div data-value="Project Management Consultancy">Project Management Consultancy</div>
+            <div data-value="Public Relations">Public Relations</div>
+            <div data-value="Publishing">Publishing</div>
+            <div data-value="Recruitment Consultancy">Recruitment Consultancy</div>
+            <div data-value="Software Development Management">Software Development Management</div>
+            <div data-value="Sports Management">Sports Management</div>
+            <div data-value="Tax Consultancy">Tax Consultancy</div>
+            <div data-value="Training Services">Training Services</div>
+            <div data-value="Video Services">Video Services</div>
+            <div data-value="Wholesale of Household Goods">Wholesale of Household Goods</div>
         </div>
-        <div class="buttons">
-          <button type="button" class="next-step">Next</button>
-        </div>
-      </div>
+    </div>
+</div>
+
+<!-- CSS -->
+<style>
+.select-btn {
+    width:100%;
+    padding:10px;
+    border-radius:6px;
+    border:1px solid #ccc;
+    cursor:pointer;
+    font-size:1rem;
+    box-shadow:0 2px 5px rgba(0,0,0,0.05);
+    background:#fff;
+    text-align:left;
+}
+
+/* Modal styles */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 100; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.5);
+}
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto; 
+    padding: 20px;
+    border-radius:8px;
+    max-width: 400px;
+    max-height: 70%;
+    overflow-y: auto;
+    box-shadow:0 4px 12px rgba(0,0,0,0.2);
+}
+.modal-content h3 {
+    margin-top:0;
+}
+.options-list div {
+    padding: 10px;
+    border-bottom:1px solid #eee;
+    cursor:pointer;
+}
+.options-list div:hover {
+    background-color:#f1f1f1;
+}
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 24px;
+    cursor: pointer;
+}
+.close:hover {
+    color: #000;
+}
+</style>
+
+<!-- JS -->
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+    const modal = document.getElementById("selectModal");
+    const btn = document.getElementById("selectTrigger");
+    const span = document.querySelector(".close");
+    const hiddenInput = document.getElementById("business_activity_input");
+
+    // Open modal
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
+
+    // Close modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // Close modal when clicked outside
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    // Select option
+    document.querySelectorAll('.options-list div').forEach(item => {
+        item.addEventListener('click', function(){
+            hiddenInput.value = this.dataset.value;
+            btn.textContent = this.textContent;
+            modal.style.display = "none";
+        });
+    });
+});
+</script>
+
 
       <!-- Step 2: Jurisdiction -->
       <div class="form-step">
