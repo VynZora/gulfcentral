@@ -1089,3 +1089,4 @@ def delete_blog_message(request, pk):
     message_obj.delete()
     messages.success(request, "Blog message deleted successfully!")
     return redirect('view_blog_messages')
+
