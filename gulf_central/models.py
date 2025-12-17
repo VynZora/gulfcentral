@@ -17,6 +17,10 @@ class News(models.Model):
 
     def __str__(self):
         return self.name
+
+    # Add this
+    def get_absolute_url(self):
+        return reverse('news_detail', kwargs={'pk': self.pk})
     
 
 # Blog Category Model
@@ -45,6 +49,10 @@ class Blog(models.Model):
 
     def __str__(self):
         return self.title
+
+    # Add this
+    def get_absolute_url(self):
+        return reverse('blog_detail', kwargs={'pk': self.pk})
 
 
 # Client Reviews
