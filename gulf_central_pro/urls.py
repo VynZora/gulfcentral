@@ -47,7 +47,7 @@ def robots_txt(request):
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    # path('admin/', admin.site.urls),
 
     # Robots.txt should be first
     path('robots.txt', robots_txt, name='robots_txt'),
