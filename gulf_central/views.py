@@ -27,6 +27,8 @@ def index(request):
     categories = categories[:6]   
     return render(request, 'index.html', {'menus': menus, 'client_reviews':client_reviews, 'teams':teams, 'clients': clients, 'latest_news':latest_news, 'categories': categories,'service_footer':random_services,'services':list(services), 'section':section})
 
+def index_redirect(request):
+    return redirect('index')
 
 def about(request):
     menus = Menu.objects.prefetch_related('categories__services').all()

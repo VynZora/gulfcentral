@@ -16,6 +16,7 @@ sitemaps = {
 urlpatterns = [
 
     path('', views.index, name= 'index'),
+    path('index.html/', views.index_redirect), 
     path('about/', views.about, name= 'about'),
     path('news/', views.news, name='news'),
     path('news/<int:pk>/', views.news_detail, name='news_detail'),
